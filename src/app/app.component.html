@@ -1,0 +1,139 @@
+
+<style>
+ 
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    justify-content: center;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+  .form {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+  border: solid 1px;
+  margin-top: 5px;
+}
+option{
+  margin-right: 10px;
+}
+select {
+  margin: 10px;
+  padding: 3px;
+}
+
+.containerfa {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+#lab{
+  margin-top: 98px;
+
+}
+.div_infos {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.lab{
+  color: #1976d2;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+span {
+  font-family: sans-serif;
+  font-style: italic;
+  font-size: larger;
+  background-color: gainsboro;
+  font-weight: 900;
+  margin-top: 5px;
+}
+
+ 
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+    .card-container > *:not(.circle-link) ,
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+  
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+</style>
+
+<div class="toolbar">
+  <div class="form">
+    <label for="">Choisissez un pays :</label>
+    <div class="entree">
+      <select class="form-control" [(ngModel)]="c">
+        <option *ngFor="let option of options" value="{{option.value}}">{{option.label}}</option>
+      </select>
+      <button (click)="onsubmit()">Rechercher</button>
+    </div>
+  </div>
+</div>
+
+  
+<div class="containerfa" *ngFor="let info of infos$| async">
+  <div class="div_infos">
+    <label class="lab" for="">Capitale :</label>
+    <span>{{ info.capital}}</span>
+  </div>
+
+  <div class="div_infos">
+    <label id="lab" class="lab" for="">Drapeau :</label>
+    <img src="{{ info.flag}}" alt="">
+  </div>
+
+  <div class="div_infos">
+    <label class="lab" for="">Code téléphone :</label>
+    <span>{{ info.phone}}</span>
+  </div>
+  
+</div>
+
+
+
+
+
